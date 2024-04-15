@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cms-angular-firebase": {
+    "cms-angular17-firebase": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/cms-angular-firebase",
+            "outputPath": "dist/cms-angular17-firebase",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "cms-angular-firebase:build:production"
+              "buildTarget": "cms-angular17-firebase:build:production"
             },
             "development": {
-              "buildTarget": "cms-angular-firebase:build:development"
+              "buildTarget": "cms-angular17-firebase:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "cms-angular-firebase:build"
+            "buildTarget": "cms-angular17-firebase:build"
           }
         },
         "test": {
