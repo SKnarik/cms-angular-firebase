@@ -8,17 +8,17 @@ import { Observable } from 'rxjs';
   styleUrl: './pages-list.component.css'
 })
 export class PagesListComponent implements OnInit {
-
+  title: string;
   pagesObservable: Observable<any[]>;
 
-  constructor(private db:AngularFireDatabase){}
+  constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
+    this.title = document.title;
     this.pagesObservable = this.getPages('/pages');
   }
 
-  getPages(listPath): Observable<any[]>{
+  getPages(listPath): Observable<any[]> {
     return this.db.list(listPath).valueChanges();
   }
-
 }
