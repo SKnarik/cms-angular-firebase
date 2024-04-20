@@ -1,0 +1,13 @@
+<a routerLink="/">Home page</a><br>
+<a routerLink="/login">Login page</a><br>
+<a routerLink="/article">Article page</a><br>
+<a routerLink="/admin">Admin</a><br>
+<div *ngIf="user">
+  <h3>Hello {{user.displayName}}</h3>
+  <img [src]="user.photoURL">
+  <button (click)="AfService.logout()">Log out</button>
+</div>
+<div *ngIf="user">
+  <p>Subscriber: {{user.roles?.subscriber ? true:false}}</p>
+  <p>Admin: {{user.roles?.admin ? true:false}}</p>
+</div>
