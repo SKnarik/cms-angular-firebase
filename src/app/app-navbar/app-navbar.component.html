@@ -1,12 +1,39 @@
-<a routerLink="/">Home page</a><br>
-<a routerLink="/login">Login page</a><br>
-<a routerLink="/article">Article page</a><br>
-<a routerLink="/admin">Admin</a><br>
-<div *ngIf="user">
-  <h3>Hello {{user.displayName}}</h3>
-  <img [src]="user.photoURL">
-  <button (click)="AfService.logout()">Log out</button>
-</div>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-button routerLink="/">Angular CMS</button>
+
+    <span class="example-spacer"></span>
+
+    <button mat-button routerLink="/article">Article page</button>
+    <button mat-button routerLink="/admin">Admin</button>
+
+    <div *ngIf="! user">
+      <button mat-button (click)="AfService.loginWithGoogle()">Login</button>
+    </div>
+
+    <div *ngIf="user">
+
+      <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <span>Hello {{user.displayName}}</span>
+        <img class="profileImg" [src]="user.photoURL">
+      </button>
+
+      <mat-menu #menu="matMenu">
+      <!-- <mat-menu #menu="matMenu" x-position="after" y-position="below" overlapTrigger="false"> -->
+        <button mat-menu-item disabled>
+          <mat-icon>account_circle</mat-icon>
+          <span>Account Settings</span>
+        </button>
+        <button mat-menu-item (click)="AfService.logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Log out</span>
+        </button>
+      </mat-menu>
+      
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
 <div *ngIf="user">
   <p>Subscriber: {{user.roles?.subscriber ? true:false}}</p>
   <p>Admin: {{user.roles?.admin ? true:false}}</p>
