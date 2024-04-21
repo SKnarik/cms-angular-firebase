@@ -4,9 +4,6 @@
 
     <span class="example-spacer"></span>
 
-    <button mat-button routerLink="/article">Article page</button>
-    <button mat-button routerLink="/admin">Admin</button>
-
     <div *ngIf="! user">
       <button mat-button (click)="AfService.loginWithGoogle()">Login</button>
     </div>
@@ -19,7 +16,7 @@
       </button>
 
       <mat-menu #menu="matMenu">
-      <!-- <mat-menu #menu="matMenu" x-position="after" y-position="below" overlapTrigger="false"> -->
+        <!-- <mat-menu #menu="matMenu" x-position="after" y-position="below" overlapTrigger="false"> -->
         <button mat-menu-item disabled>
           <mat-icon>account_circle</mat-icon>
           <span>Account Settings</span>
@@ -29,12 +26,7 @@
           <span>Log out</span>
         </button>
       </mat-menu>
-      
+
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
-
-<div *ngIf="user">
-  <p>Subscriber: {{user.roles?.subscriber ? true:false}}</p>
-  <p>Admin: {{user.roles?.admin ? true:false}}</p>
-</div>

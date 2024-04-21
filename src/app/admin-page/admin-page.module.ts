@@ -5,12 +5,16 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminPageComponent } from './admin-page.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
+import { MenusComponent } from './menus/menus.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     AdminPageComponent,
-    AppNavbarComponent
+    AppNavbarComponent,
+    MenusComponent,
+    PostsComponent
   ],
   imports: [
     CommonModule,
