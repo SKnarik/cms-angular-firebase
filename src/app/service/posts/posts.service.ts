@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-export interface Menu {
+export interface Post {
   title: "",
   url: ""
 }
@@ -11,12 +11,12 @@ export interface Menu {
 @Injectable({
   providedIn: 'root'
 })
-export class MenusService {
+export class PostsService {
 
   constructor(private afs: AngularFirestore) { }
 
-  getMenus(): Observable<any[]> {
-    return this.afs.collection("menus").snapshotChanges()
+  getPosts(): Observable<any[]> {
+    return this.afs.collection("posts").snapshotChanges()
       .pipe(
         map(actions => {
           return actions.map(a => {
@@ -27,14 +27,14 @@ export class MenusService {
         })
       );
   }
-  addMenu(menu: Menu) {
-    this.afs.collection("menus").add(menu);
+  addPost(post: Post) {
+    this.afs.collection("posts").add(post);
   }
-  deleteMenu(menuId) {
-    this.afs.doc('menus/'+menuId).delete();
+  deletePost(postId) {
+    this.afs.doc('posts/'+postId).delete();
   }
-  updateMenu(menuId, menu: Menu) {
-    this.afs.doc('menus/'+menuId).update(menu);
+  updatePost(postId, post: Post) {
+    this.afs.doc('posts/'+postId).update(post);
   }
 
 }
