@@ -1,8 +1,14 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <mat-toolbar-row>
     <button mat-button routerLink="/">Angular CMS</button>
 
     <span class="example-spacer"></span>
+
+    <div *ngFor="let menu of menusList">
+      <button mat-button routerLink="/pages/{{menu.url}}">{{menu.title}}</button>
+    </div>
+
+    <button mat-button routerLink="/article">Article Page</button>
 
     <div *ngIf="! user">
       <button mat-button (click)="AfService.loginWithGoogle()">Login</button>
@@ -10,7 +16,7 @@
 
     <div *ngIf="user">
 
-      <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <button mat-button [matMenuTriggerFor]="menu">
         <span>Hello {{user.displayName}}</span>
         <img class="profileImg" [src]="user.photoURL">
       </button>
@@ -30,8 +36,3 @@
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
-
-<div *ngIf="user">
-  <p>Subscriber: {{user.roles?.subscriber ? true:false}}</p>
-  <p>Admin: {{user.roles?.admin ? true:false}}</p>
-</div>
