@@ -18,6 +18,7 @@ import { SubscriberGuard } from './guards/subscriber.guard';
 
 import { MaterialModule } from './material.module';
 import { MenusService } from './service/menus/menus.service';
+import { PostsService } from './service/posts/posts.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { MenusService } from './service/menus/menus.service';
     AngularFireDatabaseModule,
     MaterialModule
   ],
-  providers: [AfService, AdminGuard, SubscriberGuard, MenusService],
+  providers: [AfService, AdminGuard, SubscriberGuard, MenusService, PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
