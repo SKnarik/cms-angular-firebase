@@ -6,12 +6,14 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminGuard } from './guards/admin.guard';
 import { SubscriberGuard } from './guards/subscriber.guard';
+import { HomePageComponent } from './front-page/home-page/home-page.component';
 
 
 const routes: Routes = [
-    { path: '', loadChildren: () => import('./front-page/front-page.module').then(m => m.FrontPageModule)},
+    { path: 'home', loadChildren: () => import('./front-page/front-page.module').then(m => m.FrontPageModule)},
     { path: 'login', component: LoginPageComponent },
     { path: 'admin', loadChildren: () => import('./admin-page/admin-page.module').then(m => m.AdminPageModule), canActivate: [AdminGuard] },
+    { path: '**', redirectTo: 'home' }  
 ]
 
 @NgModule({

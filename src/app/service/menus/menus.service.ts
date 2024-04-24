@@ -18,15 +18,29 @@ export class MenusService {
   getMenus(): Observable<any[]> {
     return this.afs.collection("menus").snapshotChanges()
       .pipe(
-        map(actions => {
-          return actions.map(a => {
-            const data = a.payload.doc.data() as any;
+        map(menu => {
+          return menu.map(a => {
+            const data = a.payload.doc.data() as Menu;
             const id = a.payload.doc.id;
             return { id, ...data };
           });
         })
       );
   }
+
+  getConditionalMenus(field: string, condition: any, value: string): Observable<any[]> {
+    return this.afs.collection("menus", ref => ref.where(field, condition, value)).snapshotChanges()
+      .pipe(
+        map(menu => {
+          return menu.map(a => {
+            const data = a.payload.doc.data() as Menu;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          });
+        })
+      );
+  }
+
   addMenu(menu: Menu) {
     this.afs.collection("menus").add(menu);
   }

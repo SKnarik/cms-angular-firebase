@@ -5,10 +5,10 @@
     <span class="example-spacer"></span>
 
     <div *ngFor="let menu of menusList">
-      <button mat-button routerLink="/pages/{{menu.url}}">{{menu.title}}</button>
+      <button mat-button routerLink="/home/pages/{{menu.url}}">{{menu.title}}</button>
     </div>
 
-    <button mat-button routerLink="/article">Article Page</button>
+    <button mat-button routerLink="/home/article">Article Page</button>
 
     <div *ngIf="! user">
       <button mat-button (click)="AfService.loginWithGoogle()">Login</button>
