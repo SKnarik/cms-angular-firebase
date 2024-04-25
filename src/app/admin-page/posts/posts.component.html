@@ -15,9 +15,6 @@
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="addPost()" [disabled]="!postForm.valid">Add</button>
   </form>
-
-  <!-- <p>Form status: {{postForm.value | json}}</p>
-  <p>Form status: {{postForm.status | json}}</p> -->
     
 </div>
 <div class="example-container mat-elevation-z8">
@@ -46,7 +43,7 @@
 
     <ng-container matColumnDef="content">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Content </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.content}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{(element.content.length>30)?(element.content | slice: 0:30)+' ...':element.content}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="actions">
