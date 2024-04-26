@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +17,7 @@ import { SubscriberGuard } from './guards/subscriber.guard';
 import { MaterialModule } from './material.module';
 import { MenusService } from './service/menus/menus.service';
 import { PostsService } from './service/posts/posts.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PostsService } from './service/posts/posts.service';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    MaterialModule
+    MaterialModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [AfService, AdminGuard, SubscriberGuard, MenusService, PostsService],
   bootstrap: [AppComponent]
